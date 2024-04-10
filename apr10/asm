@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import sys
+import re
+
+# Regex tester: regex101.com
+
+def parseInstruction(fileStream):
+    for line in fileStream:
+
+        line = line.rstrip()
+        match = re.match(r'(a|b)(?P<stuff>...)', line, re.IGNORECASE)
+
+        if match:
+            print(match.group(1))
+            print(match.group("stuff"))
+            print("It matched!")
+        print(line)
+
+def main():
+    parseInstruction(sys.stdin)
+
+
+if __name__ == "__main__":
+   main()
