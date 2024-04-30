@@ -11,10 +11,13 @@ def main ():
 
 #    objFile.emitSIC(10, 0x13, 1, 0x7bcd)
 #    objFile.emitSIC(10, 0, 0, 0)
-    objFile.emitSIC(10, 0, 0, 0xffff)
-    objFile.emitType1(13, 0x13)
-    objFile.emitType2(14, 0x13, 4, 6)
-    objFile.emitType3(16, 0x13, 0, 0, 1, 0, 1, 0xabc)
+#    objFile.emitSIC(10, 0, 0, 0xffff)
+#    objFile.emitType1(13, 0x13)
+#    objFile.emitType2(14, 0x13, 4, 6)
+#    objFile.emitType3(16, 0x13, 0, 0, 1, 0, 1, 0xabc)
+    objFile.emitByte(10, 10)
+    objFile.emitBytes(11, [10, 20])
+    
 #    objFile.emitType2(10, 0x22, 4, 6)
 #    for loc in range(0x100, 0x100 + 10, 3):
 #        objFile.emitSIC(loc, 0x4c, 1, 0xabc)
@@ -24,7 +27,7 @@ def main ():
         
 #    objFile.emitSIC(20, 0x4c, 1, 0xabc)
 #    objFile.emitType3(24, 0x4c, 1, 0, 1, 0, 1, 0xabc)
-    objFile.emitType4(19, 0x4c, 1, 0, 1, 0, 1, 0xabc)
+#    objFile.emitType4(19, 0x4c, 1, 0, 1, 0, 1, 0xabc)
     objFile.close(10)
 
 def error(*values):
@@ -129,10 +132,10 @@ class ObjectFile:
         self._emitTextBytes(loc, bytes)
 
     def emitByte(self, loc, byte):
-        self._emitTextBytes(self, loc, [byte])
+        self._emitTextBytes(loc, [byte])
 
     def emitBytes(self, loc, bytes):
-        self._emitTextBytes(self, loc, bytes)
+        self._emitTextBytes(loc, bytes)
 
     # Layer 3: Handles of buffering of code bytes
 
